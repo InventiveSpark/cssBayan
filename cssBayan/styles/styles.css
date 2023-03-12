@@ -32,6 +32,13 @@ body {
     padding: 0 2.5rem 0 0;
     font-size: 1.4rem;
     color: #0059D9;
+    /* Position for an icon in the upper right corner of the background: */
+    background-position: 100% 0;
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    /* Hidе an icon: */
+    background-image: none;
+
 }
 
 .meme-control:checked~.meme-caption {
@@ -64,6 +71,41 @@ body {
 /* Animate the picture when the meme is chosen: */
 .meme-control:checked~.meme-caption>.meme-content .meme-picture {
     animation: zoom 550ms 1 normal forwards ease-out 100ms;
+}
+
+@media (hover: hover) {
+
+    .container:hover .meme-caption {
+        color: #000;
+        background-image: url("../images/icon_expand.svg");
+    }
+
+    .container:hover .meme-control:checked~.meme-caption {
+        background-image: url("../images/icon_collapse.svg");
+    }
+
+    .meme-control:hover~.meme-caption {
+        background-image: url("../images/icon_collapse.svg");
+    }
+
+    .meme-control:hover~.meme-caption>.meme-content {
+        transition-timing-function: ease-in-out;
+        max-height: 65rem;
+    }
+
+    .meme-control:hover~.meme-caption>.meme-content .meme-picture {
+        animation: zoom 550ms 1 normal forwards ease-out 100ms;
+    }
+
+    .meme-control:active~.meme-caption {
+        color: #0059D9;
+        background-image: url("../images/icon_collapse_blue.svg");
+        opacity: 0.6;
+    }
+
+    .meme-control:active~.meme-caption>.meme-content {
+        opacity: 0.6;
+    }
 }
 
 /* Picture zoom animation: */
