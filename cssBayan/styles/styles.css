@@ -21,7 +21,13 @@ body {
     border-top: 0.1rem solid #E4E7E7;
 }
 
+/* Hide radio buttons: */
 .meme-control {
+    /* The best hiding method is to set the "display: none" property.
+    An element set to "display: none" is completely removed from the normal flow,
+    so its not appearing in the element tree, unlike "visibility: hidden." 
+    According to the task conditions, all blocks/parts of the accordion must be 
+    in base flow, so we have to use the visibility property: */
     visibility: hidden;
     max-width: 0;
     max-height: 0;
@@ -72,40 +78,51 @@ body {
     animation: zoom 550ms 1 normal forwards ease-out 100ms;
 }
 
+/*Cursor over the memes and hover effect only exist for devices that can support
+hover, like desktop computers:*/
 @media (hover: hover) {
 
+    /* When hover is supported, change the cursor when it is hovering over the 
+    accordion: */
     .meme-caption {
         cursor: pointer;
     }
 
+    /* Change the icon and text color: */
     .container:hover .meme-caption {
         color: #000;
         background-image: url("../images/icon_expand.svg");
     }
 
+    /* Change the icon in the chosen meme: */
     .container:hover .meme-control:checked~.meme-caption {
         background-image: url("../images/icon_collapse.svg");
     }
 
+    /* Change the icon when the cursor is hovering over the meme: */
     .meme-control:hover~.meme-caption {
         background-image: url("../images/icon_collapse.svg");
     }
 
+    /* Expand the conent when the cursor is hovering over the meme: */
     .meme-control:hover~.meme-caption>.meme-content {
         transition-timing-function: ease-in-out;
         max-height: 65rem;
     }
 
+    /* Animate the picture when the cursor is hovering over the meme: */
     .meme-control:hover~.meme-caption>.meme-content .meme-picture {
         animation: zoom 550ms 1 normal forwards ease-out 100ms;
     }
 
+    /* Change the icon and color of the caption in active state (mouse is pressed): */
     .meme-control:active~.meme-caption {
         color: #0059D9;
         background-image: url("../images/icon_collapse_blue.svg");
         opacity: 0.6;
     }
 
+    /* Change the content opacity in the active state (mouse is pressed): */
     .meme-control:active~.meme-caption>.meme-content {
         opacity: 0.6;
     }
