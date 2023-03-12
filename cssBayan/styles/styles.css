@@ -39,8 +39,25 @@ body {
 }
 
 .meme-content {
+    max-height: 0;
+    /* So that the content is not visible outside the parent block (this block): */
+    overflow: hidden;
+    /* Hidе with smooth, fast Bezier transition: */
+    transition: max-height 750ms cubic-bezier(0, 1, 0, 1);
     margin-top: 1rem;
     padding: 0 2rem;
+}
+
+.meme-picture {
+    display: block;
+    margin: 0 auto 2rem;
+    max-width: 70%;
+}
+
+/* Expand the chosen meme: */
+.meme-control:checked~.meme-caption>.meme-content {
+    max-height: 65rem;
+    transition: max-height 1s ease-in-out;
 }
 
 .meme-picture {
