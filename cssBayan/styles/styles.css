@@ -1,0 +1,216 @@
+html {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #000;
+}
+
+body {
+    margin: 0 auto;
+    padding: 2rem;
+    max-width: 50rem;
+    background-color: #F5F5EB;
+}
+
+.header {
+    padding: 0 2rem 0 0;
+    font-size: 2.3rem;
+}
+
+.meme {
+    border-top: 0.1rem solid #E4E7E7;
+}
+
+/* Hide radio buttons: */
+.meme-control {
+    /* The best hiding method is to set the "display: none" property.
+    An element set to "display: none" is completely removed from the normal flow,
+    so its not appearing in the element tree, unlike "visibility: hidden." 
+    According to the task conditions, all blocks/parts of the accordion must be 
+    in base flow, so we have to use the visibility property: */
+    visibility: hidden;
+    max-width: 0;
+    max-height: 0;
+}
+
+.meme-caption {
+    display: block;
+    padding: 0 2.5rem 0 0;
+    font-size: 1.4rem;
+    color: #0059D9;
+    /* Position for an icon in the upper right corner of the background: */
+    background-position: 100% 0;
+    background-size: 1.5rem;
+    background-repeat: no-repeat;
+    /* Hidе an icon: */
+    background-image: none;
+}
+
+.meme-control:checked~.meme-caption {
+    color: #000;
+}
+
+.meme-content {
+    max-height: 0;
+    /* So that the content is not visible outside the parent block (this block): */
+    overflow: hidden;
+    /* Hidе with smooth, fast Bezier transition: */
+    transition: max-height 750ms cubic-bezier(0, 1, 0, 1);
+    margin-top: 1rem;
+    padding: 0 2rem;
+}
+
+.meme-picture {
+    display: block;
+    margin: 0 auto 2rem;
+    max-width: 70%;
+    transition: all 800ms ease;
+}
+
+/* Expand the chosen meme: */
+.meme-control:checked~.meme-caption>.meme-content {
+    max-height: 65rem;
+    transition: max-height 1s ease-in-out;
+}
+
+/* Animate the picture when the meme is chosen: */
+.meme-control:checked~.meme-caption>.meme-content .meme-picture {
+    animation: zoom 550ms 1 normal forwards ease-out 100ms;
+}
+
+/*Cursor over the memes and hover effect only exist for devices that can support
+hover, like desktop computers:*/
+@media (hover: hover) {
+
+    /* When hover is supported, change the cursor when it is hovering over the 
+    accordion: */
+    .meme-caption {
+        cursor: pointer;
+    }
+
+    /* Change the icon and text color: */
+    .container:hover .meme-caption {
+        color: #000;
+        background-image: url("../images/icon_expand.svg");
+    }
+
+    /* Change the icon in the chosen meme: */
+    .container:hover .meme-control:checked~.meme-caption {
+        background-image: url("../images/icon_collapse.svg");
+    }
+
+    /* Change the icon when the cursor is hovering over the meme: */
+    .meme-control:hover~.meme-caption {
+        background-image: url("../images/icon_collapse.svg");
+    }
+
+    /* Expand the conent when the cursor is hovering over the meme: */
+    .meme-control:hover~.meme-caption>.meme-content {
+        transition-timing-function: ease-in-out;
+        max-height: 65rem;
+    }
+
+    /* Animate the picture when the cursor is hovering over the meme: */
+    .meme-control:hover~.meme-caption>.meme-content .meme-picture {
+        animation: zoom 550ms 1 normal forwards ease-out 100ms;
+    }
+
+    /* Change the icon and color of the caption in active state (mouse is pressed): */
+    .meme-control:active~.meme-caption {
+        color: #0059D9;
+        background-image: url("../images/icon_collapse_blue.svg");
+        opacity: 0.6;
+    }
+
+    /* Change the content opacity in the active state (mouse is pressed): */
+    .meme-control:active~.meme-caption>.meme-content {
+        opacity: 0.6;
+    }
+}
+
+/* Responsive design with three breakpoints for mobile, tablet, and desktop. 
+Font size is changed at each device: */
+@media screen and (max-width: 1920px) {
+    body {
+        padding: 1.5rem;
+    }
+
+    .header {
+        font-size: 2rem;
+    }
+
+    .meme-caption {
+        font-size: 1.2rem;
+    }
+
+    .meme-picture {
+        max-width: 75%;
+        margin-bottom: 1.5rem;
+    }
+
+    .meme-content {
+        margin: 1rem 0;
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    body {
+        padding: 1rem;
+    }
+
+    .header {
+        font-size: 1.7rem;
+    }
+
+    .meme-caption {
+        font-size: 1rem;
+    }
+
+    .meme-picture {
+        max-width: 85%;
+        margin-bottom: 1rem;
+    }
+
+    .meme-content {
+        margin: 0.75rem 0;
+        padding: 0 0.75rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .meme-caption {
+        font-size: 0.9rem;
+    }
+
+    .meme-picture {
+        max-width: 95%;
+        margin-bottom: 0.5rem;
+    }
+
+    .meme-content {
+        margin: 0.5rem 0;
+        padding: 0 0.5rem;
+    }
+}
+
+/* Picture zoom animation: */
+@keyframes zoom {
+    from {
+        transform: scale(0.65);
+        opacity: 0.4;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
