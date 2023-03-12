@@ -112,6 +112,81 @@ body {
     }
 }
 
+/* Responsive design with three breakpoints for mobile, tablet, and desktop. 
+Font size is changed at each device: */
+@media screen and (max-width: 1920px) {
+    body {
+        padding: 1.5rem;
+    }
+
+    .header {
+        font-size: 2rem;
+    }
+
+    .meme-caption {
+
+        font-size: 1.2rem;
+    }
+
+    .meme-picture {
+        max-width: 75%;
+        margin-bottom: 1.5rem;
+    }
+
+    .meme-content {
+        margin: 1rem 0;
+        padding: 0 2rem;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    body {
+        padding: 1rem;
+    }
+
+    .header {
+        font-size: 1.7rem;
+    }
+
+    .meme-caption {
+        font-size: 1rem;
+    }
+
+    .meme-picture {
+        max-width: 85%;
+        margin-bottom: 1rem;
+    }
+
+    .meme-content {
+        margin: 0.75rem 0;
+        padding: 0 0.75rem;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .header {
+        font-size: 1.5rem;
+    }
+
+    .meme-caption {
+        font-size: 0.9rem;
+    }
+
+    .meme-picture {
+        max-width: 95%;
+        margin-bottom: 0.5rem;
+    }
+
+    .meme-content {
+        margin: 0.5rem 0;
+        padding: 0 0.5rem;
+    }
+}
+
 /* Picture zoom animation: */
 @keyframes zoom {
     from {
