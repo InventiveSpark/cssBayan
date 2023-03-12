@@ -75,6 +75,10 @@ body {
 
 @media (hover: hover) {
 
+    .meme-caption {
+        cursor: pointer;
+    }
+
     .container:hover .meme-caption {
         color: #000;
         background-image: url("../images/icon_expand.svg");
