@@ -38,7 +38,6 @@ body {
     background-repeat: no-repeat;
     /* Hidе an icon: */
     background-image: none;
-
 }
 
 .meme-control:checked~.meme-caption {
@@ -124,7 +123,6 @@ Font size is changed at each device: */
     }
 
     .meme-caption {
-
         font-size: 1.2rem;
     }
 
